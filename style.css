@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+#container {
+  border: 2px lightskyblue solid;
+  border-radius: 3.5px;
+  height: 80vh;
+  display: grid;
+  width: 80vw;
+  margin: auto;
+  padding: 2px;
+}
+
+.grid-item {
+  border: 1px solid black;
+  border-radius: 3.5px;
+  background-color: lightblue;
+
+  text-align: center;
+}
