@@ -1,8 +1,9 @@
 let color = "black";
+let board = document.querySelector(".board");
+let gridItems = board.querySelectorAll("div");
 
 function createBoard(size) {
-  let board = document.querySelector(".board");
-  let gridItems = board.querySelectorAll("div"); //similar to creating holder[]
+  //similar to creating holder[]
   gridItems.forEach((div) => div.remove()); //remove all items so we can add new items
   board.style.setProperty(`grid-template-columns`, `repeat(${size},1fr)`);
   board.style.setProperty(`grid-template-rows`, `repeat(${size},1fr)`);
@@ -29,7 +30,14 @@ function changeSize(input) {
 }
 
 function changeColor() {
-  this.style.backgroundColor = color;
+  if (color === "random") {
+    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    console.log(
+      (this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`)
+    );
+  } else {
+    this.style.backgroundColor = color;
+  }
 }
 
 //click button to change color value
