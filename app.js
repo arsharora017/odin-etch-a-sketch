@@ -1,25 +1,38 @@
-const container = document.querySelector("#container");
+let color = "black";
 
-const grid = { rows: 26, col: 26 };
-const squaresCount = grid.rows * grid.col;
+function createBoard(size) {
+  let board = document.querySelector(".board");
+  let gridItems = board.querySelectorAll("div"); //similar to creating holder[]
+  gridItems.forEach((div) => div.remove()); //remove all items so we can add new items
+  board.style.setProperty(`grid-template-columns`, `repeat(${size},1fr)`);
+  board.style.setProperty(`grid-template-rows`, `repeat(${size},1fr)`);
 
-createGrid(squaresCount);
+  let totalSize = size * size;
 
-function createGrid(sqCount) {
-  for (let i = 0; i < sqCount; i++) {
-    const gridItem = document.createElement("div");
-    container.append(gridItem);
-    // gridItem.textContent = `${i + 1}`;
+  for (let i = 0; i < totalSize; i++) {
+    let gridItem = document.createElement("div");
+    gridItem.style.backgroundColor = "lightblue";
     gridItem.classList.add("grid-item");
-    gridItem.addEventListener("mouseover", updateBack);
+    gridItem.addEventListener("mouseover", changeColor);
+    board.insertAdjacentElement("beforeend", gridItem);
   }
-  container.style.setProperty(
-    `grid-template-columns`,
-    `repeat(${grid.col},1fr)`
-  );
 }
 
-function updateBack(e) {
-  const ele = e.target;
-  ele.style.backgroundColor = "red";
+createBoard(16);
+
+function changeSize(input) {
+  if (input >= 2 && input <= 100) {
+    createBoard(input);
+  } else {
+    console.log("number should be between 2 and 100");
+  }
+}
+
+function changeColor() {
+  this.style.backgroundColor = color;
+}
+
+//click button to change color value
+function changeColorBtn(choice) {
+  color = choice;
 }

@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-#container {
+/* #container {
   border: 2px lightskyblue solid;
   border-radius: 3.5px;
   height: 80vh;
@@ -10,12 +10,23 @@
   width: 80vw;
   margin: auto;
   padding: 2px;
+} */
+
+/* .grid-item {
+  border: 1px solid black;
+  border-radius: 2px;
+  background-color: lightblue;
+
+  cursor: grab;
+} */
+
+.board {
+  width: 500px;
+  height: 500px;
+  display: grid;
 }
 
 .grid-item {
-  border: 1px solid black;
-  border-radius: 3.5px;
-  background-color: lightblue;
-
-  text-align: center;
+  border: 1px solid lightskyblue;
+  border-radius: 2px;
 }
