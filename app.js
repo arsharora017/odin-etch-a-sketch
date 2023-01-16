@@ -1,6 +1,6 @@
 let color = "black";
 const holder = [];
-let click = true;
+let click = false;
 
 function createBoard(size) {
   let board = document.querySelector(".board");
@@ -32,13 +32,15 @@ function changeSize(input) {
 }
 
 function changeColor() {
-  if (color === "random") {
-    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    console.log(
-      (this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`)
-    );
-  } else {
-    this.style.backgroundColor = color;
+  if (click) {
+    if (color === "random") {
+      this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      console.log(
+        (this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`)
+      );
+    } else {
+      this.style.backgroundColor = color;
+    }
   }
 }
 
@@ -56,4 +58,17 @@ function resetColorGrid() {
 
 document.querySelector("body").addEventListener("click", () => {
   click = !click;
+});
+
+//to stop .mode text content to change when we click a button
+//it will only change our mode text stop or start coloring
+//if clicked anywhere on body
+document.querySelector("body").addEventListener("click", (e) => {
+  if (e.target.tagName != "BUTTON") {
+    if (click) {
+      document.querySelector(".mode").textContent = "Click to stop coloring!";
+    } else {
+      document.querySelector(".mode").textContent = "Click to start coloring!";
+    }
+  }
 });
