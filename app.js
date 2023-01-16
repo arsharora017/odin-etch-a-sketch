@@ -1,9 +1,10 @@
 let color = "black";
-let board = document.querySelector(".board");
-let gridItems = board.querySelectorAll("div");
+const holder = [];
+let click = true;
 
 function createBoard(size) {
-  //similar to creating holder[]
+  let board = document.querySelector(".board");
+  let gridItems = board.querySelectorAll("div"); //similar to creating holder[]
   gridItems.forEach((div) => div.remove()); //remove all items so we can add new items
   board.style.setProperty(`grid-template-columns`, `repeat(${size},1fr)`);
   board.style.setProperty(`grid-template-rows`, `repeat(${size},1fr)`);
@@ -12,6 +13,7 @@ function createBoard(size) {
 
   for (let i = 0; i < totalSize; i++) {
     let gridItem = document.createElement("div");
+    holder.push(gridItem);
     gridItem.style.backgroundColor = "lightblue";
     gridItem.classList.add("grid-item");
     gridItem.addEventListener("mouseover", changeColor);
@@ -44,3 +46,14 @@ function changeColor() {
 function changeColorBtn(choice) {
   color = choice;
 }
+
+//reset color to orignal
+function resetColorGrid() {
+  holder.forEach((el) => {
+    el.style.backgroundColor = "lightblue";
+  });
+}
+
+document.querySelector("body").addEventListener("click", () => {
+  click = !click;
+});
