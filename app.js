@@ -23,11 +23,18 @@ function createBoard(size) {
 
 createBoard(16);
 
+let content = document.querySelector("#content");
+let error = document.createElement("p");
+
 function changeSize(input) {
   if (input >= 2 && input <= 100) {
     createBoard(input);
   } else {
-    console.log("number should be between 2 and 100");
+    //shows eror if input is not between 2 and 100
+    let errorText = document.createTextNode("Enter number between 2 and 100!!");
+    error.appendChild(errorText);
+    content.appendChild(error);
+    error.classList.add("error");
   }
 }
 

@@ -12,25 +12,35 @@
     <div id="container">
       <div class="title">Sketch Pad</div>
       <div class="mode">Click to start coloring!</div>
-      <div class="content">
+      <div class="content" id="content">
         <div class="board" id="board"></div>
         <div class="buttons">
           <!-- changeColorBtn() passes the value to function in js file -->
-          <button onclick="changeColorBtn('black')">Black</button>
-          <button onclick="changeColorBtn('white')">White</button>
-          <button onclick="changeColorBtn('gray')">Gray</button>
-          <button onclick="changeColorBtn('random')">Random</button>
-          <button onclick="changeColorBtn('lightblue')">Eraser</button>
-          <button onclick="resetColorGrid()">Reset</button>
+          <button class="btn black" onclick="changeColorBtn('black')">
+            Black
+          </button>
+          <button class="btn white" onclick="changeColorBtn('white')">
+            White
+          </button>
+          <button class="btn gray" onclick="changeColorBtn('gray')">
+            Gray
+          </button>
+          <button class="btn random" onclick="changeColorBtn('random')">
+            Random
+          </button>
+          <button class="btn" onclick="changeColorBtn('lightblue')">
+            Eraser
+          </button>
+          <button class="btn" onclick="resetColorGrid()">Reset</button>
         </div>
-        <div>
+        <div class="input">
           <input
             type="text"
             placeholder="board size"
             value="16"
             onchange="changeSize(this.value)"
           />
-          <button>Update Size</button>
+          <button class="btn">Update Size</button>
         </div>
       </div>
     </div>
